@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+import { Button } from "@/components/ui";
 import { PRODUCT_CATEGORY_LABELS } from "@/constants/product-category.constants";
 import { formatDate } from "@/lib/date.utils";
 import type { Product } from "@/types";
@@ -26,22 +28,22 @@ export function ProductCard({ product, onEdit, onDelete, isDeleting }: ProductCa
       <p className="mt-2 text-xs text-gray-400 dark:text-gray-500">
         Criado em {formatDate(product.createdAt)} · Atualizado em {formatDate(product.updatedAt)}
       </p>
-      <div className="mt-4 flex gap-2">
-        <button
-          type="button"
-          onClick={() => onEdit(product)}
-          className="rounded-md bg-blue-600 px-3 py-1.5 text-sm text-white hover:bg-blue-700"
-        >
+      <div className="mt-4 flex flex-wrap gap-2">
+        <Button asChild size="sm">
+          <Link to={`/exemplo-detalhe/${product.id}`}>Ver detalhe</Link>
+        </Button>
+        <Button type="button" size="sm" onClick={() => onEdit(product)}>
           Editar
-        </button>
-        <button
+        </Button>
+        <Button
           type="button"
+          variant="danger"
+          size="sm"
           disabled={isDeleting}
           onClick={() => onDelete(product.id)}
-          className="rounded-md border border-red-300 px-3 py-1.5 text-sm text-red-600 hover:bg-red-50 disabled:opacity-50 dark:border-red-800 dark:text-red-400 dark:hover:bg-red-950"
         >
           Excluir
-        </button>
+        </Button>
       </div>
     </article>
   );

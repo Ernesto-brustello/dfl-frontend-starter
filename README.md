@@ -18,7 +18,19 @@ Ideal para quem está aprendendo React profissional ou iniciando um projeto sem 
 git clone <url-do-repo> meu-projeto
 cd meu-projeto
 npm install
+```
+
+Crie o arquivo de ambiente:
+
+```bash
+# macOS / Linux
 cp .env.example .env
+
+# Windows (PowerShell ou CMD)
+copy .env.example .env
+```
+
+```bash
 npm run dev
 ```
 
@@ -26,13 +38,14 @@ Abra [http://localhost:5173](http://localhost:5173) — a home é um **hub** com
 
 ## Exemplos incluídos
 
-| Rota                     | O que demonstra                                   |
-| ------------------------ | ------------------------------------------------- |
-| `/`                      | Hub + login demo + toggle tema + avatar no header |
-| `/exemplo-crud`          | CRUD com filtros, paginação, **dialog ao editar** |
-| `/exemplo-lista-simples` | Lista de fornecedores sem paginação               |
-| `/exemplo-estado-local`  | `useState` vs server state (React Query)          |
-| `/area-restrita`         | `ProtectedRoute` + Context de autenticação        |
+| Rota                     | O que demonstra                                              |
+| ------------------------ | ------------------------------------------------------------ |
+| `/`                      | Hub + login demo + toggle tema + avatar no header            |
+| `/exemplo-crud`          | CRUD com filtros, paginação, **dialog ao editar**            |
+| `/exemplo-detalhe/:id`   | Detalhe com `useGetProduct` (link **Ver detalhe** no card)   |
+| `/exemplo-lista-simples` | Lista de fornecedores sem paginação                          |
+| `/exemplo-estado-local`  | `useState` vs server state (React Query)                     |
+| `/area-restrita`         | `ProtectedRoute` + Context de autenticação                   |
 
 ## Estrutura de pastas
 
@@ -68,8 +81,9 @@ types → enums/constants → dummy → mapper → service → queryKey → hook
 ## UX global (header e produtos)
 
 - **Tema claro/escuro** — `ThemeProvider` + ícone no header; preferência em `localStorage`
-- **Avatar** — após login, foto do usuário no header (`User.avatarUrl`)
+- **Avatar** — após login, foto local em `public/avatars/demo-user.jpg`
 - **Dialog** — editar produto abre modal; criar usa tela dedicada com botão **Voltar**
+- **Button / Input** — primitivos em `components/ui/` para formulários e ações
 
 ## Comandos úteis
 
@@ -92,7 +106,8 @@ Copie `.env.example` para `.env`. Hoje os services usam dados dummy; `VITE_API_U
 ## Como usar neste projeto
 
 1. Explore os exemplos nas rotas do hub
-2. Leia os `README.md` dentro de `src/services/`, `src/mappers/`, etc.
+2. Leia os `README.md` em cada pasta de `src/`:
+   - `components/`, `constants/`, `contexts/`, `enums/`, `hooks/`, `lib/`, `mappers/`, `pages/`, `services/`, `test-utils/`, `types/`
 3. **Copie a pasta** de um módulo (ex.: `products/`) e adapte para seu domínio (Todo, galeria, livros…)
 4. Os exemplos podem permanecer como referência ou ser removidos quando não precisar mais
 

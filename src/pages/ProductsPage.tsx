@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { ProductEditDialog, ProductFilters, ProductForm, ProductList } from "@/components/products";
-import { EmptyState, ErrorState, LoadingState, Pagination } from "@/components/ui";
+import { Button, EmptyState, ErrorState, LoadingState, Pagination } from "@/components/ui";
 import { useCreateProduct } from "@/hooks/useCreateProduct";
 import { useDeleteProduct } from "@/hooks/useDeleteProduct";
 import { useGetProducts } from "@/hooks/useGetProducts";
@@ -47,18 +47,15 @@ export default function ProductsPage() {
           <h1 className="text-2xl font-bold text-gray-900 dark:text-gray-100">Produtos</h1>
           <p className="mt-1 text-sm text-gray-600 dark:text-gray-400">
             Filtros em <code className="rounded bg-gray-100 px-1 dark:bg-gray-800">useState</code> ·
-            dados em <code className="rounded bg-gray-100 px-1 dark:bg-gray-800">React Query</code>{" "}
-            · editar em <code className="rounded bg-gray-100 px-1 dark:bg-gray-800">Dialog</code>
+            dados em <code className="rounded bg-gray-100 px-1 dark:bg-gray-800">React Query</code> ·
+            editar em <code className="rounded bg-gray-100 px-1 dark:bg-gray-800">Dialog</code> ·
+            detalhe em <code className="rounded bg-gray-100 px-1 dark:bg-gray-800">/exemplo-detalhe/:id</code>
           </p>
         </div>
         {!showCreateForm && (
-          <button
-            type="button"
-            onClick={() => setShowCreateForm(true)}
-            className="rounded-md bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700"
-          >
+          <Button type="button" onClick={() => setShowCreateForm(true)}>
             Novo produto
-          </button>
+          </Button>
         )}
       </header>
 

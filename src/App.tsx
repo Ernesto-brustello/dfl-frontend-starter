@@ -7,6 +7,7 @@ import { AuthProvider, ThemeProvider } from "@/contexts";
 import HomePage from "@/pages/HomePage";
 import LocalStateExamplePage from "@/pages/LocalStateExamplePage";
 import NotFound from "@/pages/NotFound";
+import ProductDetailPage from "@/pages/ProductDetailPage";
 import ProductsPage from "@/pages/ProductsPage";
 import RestrictedAreaPage from "@/pages/RestrictedAreaPage";
 import SuppliersPage from "@/pages/SuppliersPage";
@@ -31,6 +32,7 @@ export default function App() {
                 <Route element={<AppLayout />}>
                   <Route path="/" element={<HomePage />} />
                   <Route path="/exemplo-crud" element={<ProductsPage />} />
+                  <Route path="/exemplo-detalhe/:id" element={<ProductDetailPage />} />
                   <Route path="/exemplo-lista-simples" element={<SuppliersPage />} />
                   <Route path="/exemplo-estado-local" element={<LocalStateExamplePage />} />
                   <Route element={<ProtectedRoute />}>

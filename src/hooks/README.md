@@ -43,7 +43,7 @@ Assim a UI não depende da implementação interna do Provider.
 | ---- | ---- | --- |
 | `useGetProducts` | query | listagem paginada com filtros |
 | `useGetAllProducts` | query | select no formulário |
-| `useGetProduct` | query | detalhe / edição |
+| `useGetProduct` | query | detalhe por id (`/exemplo-detalhe/:id`) — a edição na lista usa o produto já carregado no dialog |
 | `useCreateProduct` | mutation | criar + invalidar cache |
 | `useUpdateProduct` | mutation | editar + invalidar cache |
 | `useDeleteProduct` | mutation | excluir + invalidar cache |

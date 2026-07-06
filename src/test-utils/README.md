@@ -36,7 +36,7 @@ Exceção: AuthContext importa demoUser para o stub de login.
 
 ## Usuário demo
 
-`user.dummy.ts` — `demoUser` com `avatarUrl` (link direto para foto mock). Referência para testes e auth stub.
+`user.dummy.ts` — `demoUser` com `avatarUrl` (`/avatars/demo-user.jpg` em `public/`). Referência para testes e auth stub.
 
 ## Futuro (API real)
 

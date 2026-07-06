@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Button, Input, formFieldClass } from "@/components/ui";
 import { PRODUCT_CATEGORIES, type ProductCategory } from "@/enums/product-category.enum";
 import { PRODUCT_CATEGORY_LABELS } from "@/constants/product-category.constants";
 import { useGetSuppliers } from "@/hooks/useGetSuppliers";
@@ -25,9 +26,6 @@ const emptyForm: CreateProductDto = {
   category: PRODUCT_CATEGORIES[0],
   supplierId: "",
 };
-
-const inputClass =
-  "w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm text-gray-900 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-100";
 
 export function ProductForm({
   initial,
@@ -74,13 +72,9 @@ export function ProductForm({
       )}
     >
       {showBackButton && (
-        <button
-          type="button"
-          onClick={onCancel}
-          className="flex items-center gap-1 text-sm text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-100"
-        >
+        <Button type="button" variant="ghost" size="sm" onClick={onCancel} className="px-0">
           ← Voltar
-        </button>
+        </Button>
       )}
 
       {!hideTitle && (
@@ -96,12 +90,11 @@ export function ProductForm({
         >
           Nome
         </label>
-        <input
+        <Input
           id="name"
           required
           value={form.name}
           onChange={(e) => setForm({ ...form, name: e.target.value })}
-          className={inputClass}
         />
       </div>
 
@@ -113,7 +106,7 @@ export function ProductForm({
           >
             Preço (R$)
           </label>
-          <input
+          <Input
             id="price"
             type="number"
             min={0}
@@ -121,7 +114,6 @@ export function ProductForm({
             required
             value={form.price}
             onChange={(e) => setForm({ ...form, price: Number(e.target.value) })}
-            className={inputClass}
           />
         </div>
         <div>
@@ -131,14 +123,13 @@ export function ProductForm({
           >
             Estoque
           </label>
-          <input
+          <Input
             id="stock"
             type="number"
             min={0}
             required
             value={form.stock}
             onChange={(e) => setForm({ ...form, stock: Number(e.target.value) })}
-            className={inputClass}
           />
         </div>
       </div>
@@ -154,7 +145,7 @@ export function ProductForm({
           id="form-category"
           value={form.category}
           onChange={(e) => setForm({ ...form, category: e.target.value as ProductCategory })}
-          className={inputClass}
+          className={formFieldClass}
         >
           {PRODUCT_CATEGORIES.map((cat) => (
             <option key={cat} value={cat}>
@@ -175,7 +166,7 @@ export function ProductForm({
           id="supplier"
           value={form.supplierId ?? ""}
           onChange={(e) => setForm({ ...form, supplierId: e.target.value })}
-          className={inputClass}
+          className={formFieldClass}
         >
           <option value="">Nenhum</option>
           {suppliers?.map((s) => (
@@ -190,21 +181,13 @@ export function ProductForm({
       </div>
 
       <div className="flex gap-2">
-        <button
-          type="submit"
-          disabled={isSubmitting}
-          className="rounded-md bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700 disabled:opacity-50"
-        >
+        <Button type="submit" disabled={isSubmitting}>
           {isSubmitting ? "Salvando..." : "Salvar"}
-        </button>
+        </Button>
         {!showBackButton && (
-          <button
-            type="button"
-            onClick={onCancel}
-            className="rounded-md border border-gray-300 px-4 py-2 text-sm hover:bg-gray-50 dark:border-gray-600 dark:hover:bg-gray-800"
-          >
+          <Button type="button" variant="secondary" onClick={onCancel}>
             Cancelar
-          </button>
+          </Button>
         )}
       </div>
     </form>

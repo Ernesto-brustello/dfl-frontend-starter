@@ -1,5 +1,5 @@
-import { useState } from "react";
 import { Link } from "react-router-dom";
+import { Button } from "@/components/ui";
 import { useAuth } from "@/hooks/useAuth";
 
 export default function RestrictedAreaPage() {
@@ -29,13 +29,14 @@ export default function RestrictedAreaPage() {
               <p className="text-sm text-green-700 dark:text-green-300">{user.email}</p>
             </div>
           </div>
-          <button
+          <Button
             type="button"
+            variant="secondary"
             onClick={signOut}
-            className="mt-4 rounded-md border border-green-600 px-4 py-2 text-sm text-green-800 hover:bg-green-100 dark:text-green-200 dark:hover:bg-green-900"
+            className="mt-4 border-green-600 text-green-800 hover:bg-green-100 dark:text-green-200 dark:hover:bg-green-900"
           >
             Sair
-          </button>
+          </Button>
         </div>
       ) : (
         <p className="text-gray-600 dark:text-gray-400">
@@ -47,40 +48,5 @@ export default function RestrictedAreaPage() {
         Voltar ao início
       </Link>
     </main>
-  );
-}
-
-export function RestrictedLoginPanel() {
-  const { signIn, isLoading, isAuthenticated } = useAuth();
-  const [email, setEmail] = useState("demo@devfellowship.com");
-
-  if (isAuthenticated) return null;
-
-  return (
-    <form
-      onSubmit={(e) => {
-        e.preventDefault();
-        void signIn(email);
-      }}
-      className="rounded-lg border border-gray-200 bg-white p-4 dark:border-gray-700 dark:bg-gray-900"
-    >
-      <p className="text-sm font-medium text-gray-700 dark:text-gray-300">Login demo (stub)</p>
-      <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">
-        Após entrar, veja o avatar no canto superior direito do header.
-      </p>
-      <input
-        type="email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-        className="mt-2 w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm dark:border-gray-600 dark:bg-gray-800 dark:text-gray-100"
-      />
-      <button
-        type="submit"
-        disabled={isLoading}
-        className="mt-3 rounded-md bg-gray-900 px-4 py-2 text-sm text-white disabled:opacity-50 dark:bg-gray-100 dark:text-gray-900"
-      >
-        {isLoading ? "Entrando..." : "Entrar"}
-      </button>
-    </form>
   );
 }

@@ -1,5 +1,5 @@
 import { HubCard } from "@/components/layout";
-import { RestrictedLoginPanel } from "@/pages/RestrictedAreaPage";
+import { RestrictedLoginPanel } from "@/components/auth";
 
 export default function HomePage() {
   return (
@@ -19,7 +19,7 @@ export default function HomePage() {
           title="CRUD de Produtos"
           badge="Paginação"
           to="/exemplo-crud"
-          description="CRUD completo com filtros, paginação, dialog ao editar, datas, enums e React Query."
+          description="CRUD completo com filtros, paginação, dialog ao editar, rota de detalhe e React Query."
         />
         <HubCard
           title="Lista de Fornecedores"

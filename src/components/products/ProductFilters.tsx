@@ -1,3 +1,4 @@
+import { formFieldClass, Input } from "@/components/ui";
 import { PRODUCT_CATEGORY_FILTER_OPTIONS } from "@/constants/product-category.constants";
 import type { ProductCategoryFilter } from "@/types";
 
@@ -7,9 +8,6 @@ interface ProductFiltersProps {
   onSearchChange: (value: string) => void;
   onCategoryChange: (value: ProductCategoryFilter) => void;
 }
-
-const fieldClass =
-  "w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm text-gray-900 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-100";
 
 export function ProductFilters({
   searchTerm,
@@ -26,13 +24,12 @@ export function ProductFilters({
         >
           Buscar por nome
         </label>
-        <input
+        <Input
           id="search"
           type="search"
           value={searchTerm}
           onChange={(e) => onSearchChange(e.target.value)}
           placeholder="Digite o nome do produto..."
-          className={fieldClass}
         />
       </div>
       <div className="sm:w-56">
@@ -46,7 +43,7 @@ export function ProductFilters({
           id="category"
           value={category}
           onChange={(e) => onCategoryChange(e.target.value as ProductCategoryFilter)}
-          className={fieldClass}
+          className={formFieldClass}
         >
           {PRODUCT_CATEGORY_FILTER_OPTIONS.map((opt) => (
             <option key={opt.value} value={opt.value}>

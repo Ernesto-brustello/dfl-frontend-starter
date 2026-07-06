@@ -44,9 +44,9 @@ Páginas **montam**; componentes **renderizam** e **disparam callbacks**.
 
 | Pasta | O que tem |
 | ----- | --------- |
-| `ui/` | `LoadingState`, `ErrorState`, `EmptyState`, `Pagination`, `Dialog`, `ThemeToggle`, `ErrorBoundary` |
+| `ui/` | `LoadingState`, `ErrorState`, `EmptyState`, `Pagination`, `Dialog`, `ThemeToggle`, `ErrorBoundary`, `Button`, `Input` |
 | `layout/` | `AppLayout`, `HeaderActions`, `UserMenu`, `HubCard` |
-| `auth/` | `ProtectedRoute` |
+| `auth/` | `ProtectedRoute`, `RestrictedLoginPanel` |
 | `products/` | `ProductList`, `ProductCard`, `ProductForm`, `ProductFilters`, `ProductEditDialog` |
 | `suppliers/` | `SupplierList`, `SupplierCard` |
 
