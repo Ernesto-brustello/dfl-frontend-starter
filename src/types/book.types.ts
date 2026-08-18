@@ -6,6 +6,7 @@ export type Livro = {
   paginas?: number;
   publicadoEm?: string | null;
   resumo?: string;
+  inStock: boolean;
   createdAt: string;
   updatedAt: string;
 };

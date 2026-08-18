@@ -8,7 +8,7 @@ export default function LivroFormPage() {
   const { id } = useParams();
   const { data } = useLivro(id as string);
   const livro = (data as any) ?? null;
-  const [form, setForm] = useState<CreateLivroDto>({ titulo: "", autor: "" });
+  const [form, setForm] = useState<CreateLivroDto>({ titulo: "", autor: "", inStock: true });
   const create = useCreateLivro();
   const update = useUpdateLivro();
   const navigate = useNavigate();
@@ -22,6 +22,7 @@ export default function LivroFormPage() {
         paginas: livro.paginas,
         publicadoEm: livro.publicadoEm,
         resumo: livro.resumo,
+        inStock: livro.inStock ?? true,
       });
     }
   }, [livro]);

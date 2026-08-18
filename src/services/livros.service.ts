@@ -35,6 +35,7 @@ function seed(): Livro[] {
       paginas: 96,
       publicadoEm: "1943-04-06",
       resumo: "Um piloto encontra um jovem príncipe em um deserto...",
+      inStock: true,
       createdAt: now(),
       updatedAt: now(),
     },
@@ -46,6 +47,7 @@ function seed(): Livro[] {
       paginas: 256,
       publicadoEm: "1899-01-01",
       resumo: "Obra-prima da literatura brasileira sobre ciúme e memória.",
+      inStock: false,
       createdAt: now(),
       updatedAt: now(),
     },
@@ -87,6 +89,7 @@ export function createLivro(dto: CreateLivroDto) {
   const b: Livro = {
     id: uid(),
     ...dto,
+    inStock: dto.inStock ?? true,
     createdAt: now(),
     updatedAt: now(),
   } as Livro;
