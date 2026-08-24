@@ -11,6 +11,9 @@ import ProductDetailPage from "@/pages/ProductDetailPage";
 import ProductsPage from "@/pages/ProductsPage";
 import RestrictedAreaPage from "@/pages/RestrictedAreaPage";
 import SuppliersPage from "@/pages/SuppliersPage";
+import LivrosPage from "@/pages/LivrosPage";
+import LivroDetailPage from "@/pages/LivroDetailPage";
+import LivroFormPage from "@/pages/LivroFormPage";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -35,6 +38,11 @@ export default function App() {
                   <Route path="/exemplo-detalhe/:id" element={<ProductDetailPage />} />
                   <Route path="/exemplo-lista-simples" element={<SuppliersPage />} />
                   <Route path="/exemplo-estado-local" element={<LocalStateExamplePage />} />
+                  {/* Rotas do módulo Livros (adicionais) */}
+                  <Route path="/livros" element={<LivrosPage />} />
+                  <Route path="/livros/novo" element={<LivroFormPage />} />
+                  <Route path="/livros/:id/editar" element={<LivroFormPage />} />
+                  <Route path="/livros/:id" element={<LivroDetailPage />} />
                   <Route element={<ProtectedRoute />}>
                     <Route path="/area-restrita" element={<RestrictedAreaPage />} />
                   </Route>
