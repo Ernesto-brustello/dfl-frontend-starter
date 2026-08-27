@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { Button, Input } from "@/components/ui";
+import { Button, EmptyState, Input } from "@/components/ui";
 import { LivroList } from "@/components/books/LivroList";
 import { useLivros, useDeleteLivro, useUpdateLivro } from "@/hooks/useLivros";
 import type { Livro } from "@/types/book.types";
@@ -44,6 +44,8 @@ export default function LivrosPage() {
 
       {isLoading ? (
         <div>Carregando...</div>
+      ) : livros.length === 0 ? (
+        <EmptyState message="Nenhum livro encontrado." />
       ) : (
         <LivroList
           livros={livros}
