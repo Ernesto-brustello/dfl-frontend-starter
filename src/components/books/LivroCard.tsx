@@ -2,18 +2,26 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui";
 import type { Livro } from "@/types/book.types";
 import { formatDate } from "@/lib/date.utils";
-import { useState } from "react";
 
 interface LivroCardProps {
   livro: Livro;
+  isFavorite: boolean;
+  onToggleFavorite: () => void;
   onEdit: (livro: Livro) => void;
   onDelete: (id: string) => void;
   onToggleStock: (id: string) => void;
   isDeleting?: boolean;
 }
 
-export function LivroCard({ livro, onEdit, onDelete, onToggleStock, isDeleting }: LivroCardProps) {
-  const [isFavorite, setIsFavorite] = useState(false);
+export function LivroCard({
+  livro,
+  isFavorite,
+  onToggleFavorite,
+  onEdit,
+  onDelete,
+  onToggleStock,
+  isDeleting,
+}: LivroCardProps) {
   const isSoldOut = !livro.inStock;
 
   return (
@@ -47,7 +55,7 @@ export function LivroCard({ livro, onEdit, onDelete, onToggleStock, isDeleting }
         <Button asChild size="sm">
           <Link to={`/livros/${livro.id}`}>Ver</Link>
         </Button>
-        <Button type="button" size="sm" onClick={() => setIsFavorite(!isFavorite)}>
+        <Button type="button" size="sm" onClick={onToggleFavorite}>
           {isFavorite ? "Desfavoritar" : "Favoritar"}
         </Button>
         <Button type="button" size="sm" onClick={() => onToggleStock(livro.id)}>
